@@ -31,12 +31,6 @@ android {
             keyAlias = "upload"
             keyPassword = System.getenv("KEY_PASSWORD")
         }
-        create("debugConfig") {
-            storeFile = file("${rootDir}/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
     }
 
     buildTypes {
@@ -44,11 +38,11 @@ android {
             isCrunchPngs = false
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            // Menggunakan debugConfig agar tidak membutuhkan environment variable dari .env / release keystore
-            signingConfig = signingConfigs.getByName("debugConfig")
+            // Gunakan signingConfig "debug" bawaan Android Gradle Plugin
+            signingConfig = signingConfigs.getByName("debug")
         }
         debug { 
-            signingConfig = signingConfigs.getByName("debugConfig")
+            signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
         }
     }
