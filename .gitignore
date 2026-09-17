@@ -94,3 +94,7 @@ unittest-section*.txt
 # Clone referensi upstream buat verifikasi manual — jangan pernah commit
 /ref-*
 /rootfs-test/
+
+# .env.example WAJIB di-commit (dipakai Secrets Gradle Plugin sbg default/fallback di CI).
+# Jangan pernah isi file ini dengan secret asli.
+!.env.example
